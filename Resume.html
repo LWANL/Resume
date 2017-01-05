@@ -268,13 +268,15 @@
             });
 
             $('#more').click(function () {
-                clearInterval(time1);                
+                clearInterval(time1); 
+                clearInterval(time2); 
                 $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
                 $('#more').css("display", "none");
                 $('#less').css("display", "block");
                 antiarrow();
             });
             $('#less').click(function () {
+                clearInterval(time1);  
                 clearInterval(time2);               
                 if ($('.rightPages:visible').length != 0) {
                     $('.rightPages:visible').stop(true).animate({width: 'toggle'}, 500);
