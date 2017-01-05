@@ -254,7 +254,6 @@
                 clearInterval(time1);
                 clearInterval(time2);
                 $('#more img').fadeIn();
-                $('#less img').fadeIn();
             });
             $('#more div').mouseout(function () {
                 arrow();
@@ -262,7 +261,6 @@
             $('#less div').mouseover(function () {
                 clearInterval(time1);
                 clearInterval(time2);
-                $('#more img').fadeIn();
                 $('#less img').fadeIn();
             });
             $('#less div').mouseout(function () {
@@ -270,15 +268,18 @@
             });
 
             $('#more').click(function () {
+                $('#more img').fadeIn();
                 clearInterval(time1);
-                antiarrow();
+                clearInterval(time2);
                 $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
                 $('#more').css("display", "none");
                 $('#less').css("display", "block");
+                antiarrow();
             });
             $('#less').click(function () {
+                $('#less img').fadeIn();
+                clearInterval(time1);
                 clearInterval(time2);
-                arrow();
                 if ($('.rightPages:visible').length != 0) {
                     $('.rightPages:visible').stop(true).animate({width: 'toggle'}, 500);
                     setTimeout(function () {
@@ -289,6 +290,7 @@
                 }
                 $('#more').css("display", "block");
                 $('#less').css("display", "none");
+                arrow();
             });
 
 
