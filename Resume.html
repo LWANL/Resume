@@ -218,26 +218,10 @@
 
     </div>
     <script>
-        function IsPC() {
-            var userAgentInfo = navigator.userAgent;
-            var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod"];
-            var flag = true;
-            for (var v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
-
         $(window).ready(function () {
             arrow();
             antiarrow();
         });
-
         function arrow(){
             var i=2;
             time1=setInterval(function(){
@@ -250,36 +234,35 @@
                 $('#less img').eq(i<=0?i=2:--i).fadeToggle();
             },500);
         }
-            $('#more div').mouseover(function () {
-                clearInterval(time1);
-                clearInterval(time2);
-                $('#more img').fadeIn();
-            });
-            $('#more div').mouseout(function () {
-                arrow();
-            });
-            $('#less div').mouseover(function () {
-                clearInterval(time1);
-                clearInterval(time2);
-                $('#less img').fadeIn();
-            });
-            $('#less div').mouseout(function () {
-                antiarrow();
-            });
-
-            $('#more').click(function () {
-                $('#more img').fadeIn();
-                clearInterval(time1);
-                clearInterval(time2);
-                $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
-                $('#more').css("display", "none");
-                $('#less').css("display", "block");
-                antiarrow();
-            });
-            $('#less').click(function () {
-                $('#less img').fadeIn();
-                clearInterval(time1);
-                clearInterval(time2);
+        $('#more div').mouseover(function () {
+            clearInterval(time1);
+            clearInterval(time2);
+            $('#more img').fadeIn();
+        });
+        $('#more div').mouseout(function () {
+            arrow();
+        });
+        $('#less div').mouseover(function () {
+            clearInterval(time1);
+            clearInterval(time2);
+            $('#less img').fadeIn();
+        });
+        $('#less div').mouseout(function () {
+            antiarrow();
+        });
+        $('#more').click(function () {
+            $('#more img').fadeIn();
+            clearInterval(time1);
+            clearInterval(time2);
+            $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
+            $('#more').css("display", "none");
+            $('#less').css("display", "block");
+            antiarrow();
+        });
+        $('#less').click(function () {
+            $('#less img').fadeIn();
+            clearInterval(time1);
+            clearInterval(time2);
                 if ($('.rightPages:visible').length != 0) {
                     $('.rightPages:visible').stop(true).animate({width: 'toggle'}, 500);
                     setTimeout(function () {
@@ -303,7 +286,6 @@
                     $('.rightPages').eq(i).stop(true).animate({width:'toggle'},500); //打开当前点击的页
                     a++;                                            //点击次数加一
                 }
-
                 else {                                        //如果已经打开页
                     $('.rightPages').eq(arr[a-1]).stop(true).animate({width:'toggle'},500);    //从数组找到上一次点击的序号页，关闭
                     if(arr[a-1]!=i){                                        //如果当前点击的序号与上一次不同
