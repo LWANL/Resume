@@ -250,26 +250,10 @@
                 $('#less img').eq(i<=0?i=2:--i).fadeToggle();
             },500);
         }
-//             $('#more div').mouseover(function () {
-//                 clearInterval(time1);
-//                 clearInterval(time2);
-//                 $('#more img').fadeIn();
-//             });
-//             $('#more div').mouseout(function () {
-//                 arrow();
-//             });
-//             $('#less div').mouseover(function () {
-//                 clearInterval(time1);
-//                 clearInterval(time2);
-//                 $('#less img').fadeIn();
-//             });
-//             $('#less div').mouseout(function () {
-//                 antiarrow();
-//             });
-
-           $('#more').click(function () {
+            $('#more div').mouseover(function () {
+                clearInterval(time1);
+                clearInterval(time2);
                 $('#more img').fadeIn();
-<<<<<<< HEAD
             });
             $('#more div').mouseout(function () {
                 arrow();
@@ -287,10 +271,6 @@
                 $('#more img').fadeIn();
                 clearInterval(time1);
                 clearInterval(time2);
-=======
-                clearInterval(time1);
-                clearInterval(time2);
->>>>>>> origin/gh-pages
                 $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
                 $('#more').css("display", "none");
                 $('#less').css("display", "block");
@@ -312,7 +292,6 @@
                 $('#less').css("display", "none");
                 arrow();
             });
-
 
         var arr=[];
         var a=0;
