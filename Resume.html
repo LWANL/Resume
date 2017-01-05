@@ -218,10 +218,26 @@
 
     </div>
     <script>
+        function IsPC() {
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+
         $(window).ready(function () {
             arrow();
             antiarrow();
         });
+
         function arrow(){
             var i=2;
             time1=setInterval(function(){
@@ -234,42 +250,75 @@
                 $('#less img').eq(i<=0?i=2:--i).fadeToggle();
             },500);
         }
-        $('#more div').mouseover(function () {
-            clearInterval(time1);
-            clearInterval(time2);
-            $('#more img').fadeIn();
-            $('#less img').fadeIn();
-        });
-        $('#more div').mouseout(function () {
-            arrow();
-        });
-        $('#less div').mouseover(function () {
-            clearInterval(time1);
-            clearInterval(time2);
-            $('#more img').fadeIn();
-            $('#less img').fadeIn();
-        });
-        $('#less div').mouseout(function () {
-            antiarrow();
-        });
+        if(flag=true) {
+            $('#more div').mouseover(function () {
+                clearInterval(time1);
+                clearInterval(time2);
+                $('#more img').fadeIn();
+                $('#less img').fadeIn();
+            });
+            $('#more div').mouseout(function () {
+                arrow();
+            });
+            $('#less div').mouseover(function () {
+                clearInterval(time1);
+                clearInterval(time2);
+                $('#more img').fadeIn();
+                $('#less img').fadeIn();
+            });
+            $('#less div').mouseout(function () {
+                antiarrow();
+            });
+            console.log(777)
 
-        $('#more').click(function () {
-            $('.rightBar ul').stop(true).animate({width:'toggle'},500);
-            $('#more').css("display","none");
-            $('#less').css("display","block");
-        });
-        $('#less').click(function () {
-            if($('.rightPages:visible').length != 0){
-                $('.rightPages:visible').stop(true).animate({width:'toggle'},500);
-                setTimeout(function () {
-                    $('.rightBar ul').animate({width:'toggle'},500);
-                },500);
-            }else{
-                $('.rightBar ul').animate({width:'toggle'},500);
-            }
-            $('#more').css("display","block");
-            $('#less').css("display","none");
-        });
+            $('#more').click(function () {
+                $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
+                $('#more').css("display", "none");
+                $('#less').css("display", "block");
+            });
+            $('#less').click(function () {
+                if ($('.rightPages:visible').length != 0) {
+                    $('.rightPages:visible').stop(true).animate({width: 'toggle'}, 500);
+                    setTimeout(function () {
+                        $('.rightBar ul').animate({width: 'toggle'}, 500);
+                    }, 500);
+                } else {
+                    $('.rightBar ul').animate({width: 'toggle'}, 500);
+                }
+                $('#more').css("display", "block");
+                $('#less').css("display", "none");
+            });
+        }
+        if(flag=false){
+            $('#more').click(function () {
+                clearInterval(time1);
+                clearInterval(time2);
+                $('#more img').fadeIn();
+                $('#less img').fadeIn();
+                $('.rightBar ul').stop(true).animate({width: 'toggle'}, 500);
+                $('#more').css("display", "none");
+                $('#less').css("display", "block");
+                antiarrow();
+            });
+            $('#less').click(function () {
+                clearInterval(time1);
+                clearInterval(time2);
+                $('#more img').fadeIn();
+                $('#less img').fadeIn();
+                if ($('.rightPages:visible').length != 0) {
+                    $('.rightPages:visible').stop(true).animate({width: 'toggle'}, 500);
+                    setTimeout(function () {
+                        $('.rightBar ul').animate({width: 'toggle'}, 500);
+                    }, 500);
+                } else {
+                    $('.rightBar ul').animate({width: 'toggle'}, 500);
+                }
+                $('#more').css("display", "block");
+                $('#less').css("display", "none");
+                arrow();
+            });
+        }
+
         var arr=[];
         var a=0;
         $('.li').each(function () {
